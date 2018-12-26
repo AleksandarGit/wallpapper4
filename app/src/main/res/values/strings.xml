@@ -13,4 +13,8 @@
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
     <string name="start">Start</string>
     <string name="welcomeMessage">Hello World!</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textview">TextView</string>
 </resources>

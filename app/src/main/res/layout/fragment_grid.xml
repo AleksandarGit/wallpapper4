@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gridLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:columnCount="3"
+    android:elevation="5dp"
+    android:padding="5dp"
+    android:rowCount="10"
+    android:visibility="visible">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/wallpaperGridrecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</GridLayout>
