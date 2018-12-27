@@ -13,13 +13,14 @@
         android:clickable="true"
         android:focusable="true"
         card_view:cardBackgroundColor="@color/cardview_light_background"
-        card_view:cardCornerRadius="5dp"
-        card_view:cardElevation="5dp"
+        card_view:cardCornerRadius="20dp"
+        card_view:cardElevation="15dp"
         card_view:cardUseCompatPadding="false">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/cardview_shadow_start_color"
             android:orientation="horizontal">
 
             <ImageView

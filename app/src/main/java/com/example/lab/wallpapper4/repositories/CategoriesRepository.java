@@ -21,7 +21,7 @@ public class CategoriesRepository {
 
 
     // Pretend to get data from a webservice or online source
-    public MutableLiveData<List<Category>> getNicePlaces(){
+    public MutableLiveData<List<Category>> getMutableCategoriesList(){
         setCategories();
         MutableLiveData<List<Category>> data = new MutableLiveData<>();
         data.setValue(dataSet);

@@ -11,18 +11,18 @@ import com.example.lab.wallpapper4.repositories.WallpaperRepository;
 
 import java.util.List;
 
-public class MainActivityViewModelSub extends ViewModel {
+public class ImageGridViewModel extends ViewModel {
 
     private MutableLiveData<List<Wallpaper>> mSubCategories;
     private WallpaperRepository mRepo;
     private MutableLiveData<Boolean> mIsUpdating = new MutableLiveData<>();
 
-    public void init() {
+    public void init(Integer index) {
         if (mSubCategories != null) {
             return;
         }
-        mRepo = WallpaperRepository.getInstance();
-        mSubCategories = mRepo.getSubcategories();
+        mRepo = WallpaperRepository.getInstance(index);
+        mSubCategories = mRepo.getImages();
     }
 
     public void addNewValue(final Wallpaper wallpaper) {

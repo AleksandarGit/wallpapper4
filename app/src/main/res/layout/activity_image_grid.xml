@@ -7,14 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".ImageGrid">
 
-    <fragment
-        android:id="@+id/wallpaperGrid"
-        android:name="com.bumptech.glide.manager.RequestManagerFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+
+    <android.support.v7.widget.GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_grid" />
+        app:columnCount="5"
+        app:rowCount="3">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/wallpaperGridrecycler"
+            android:layout_width="110dp"
+            android:layout_height="99dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/grid_element" />
+
+    </android.support.v7.widget.GridLayout>
 </android.support.constraint.ConstraintLayout>

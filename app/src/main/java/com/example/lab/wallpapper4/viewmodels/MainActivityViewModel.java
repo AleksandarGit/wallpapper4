@@ -13,16 +13,16 @@ import java.util.List;
 
 public class MainActivityViewModel  extends ViewModel {
 
-    private MutableLiveData<List<Category>> mNicePlaces;
+    private MutableLiveData<List<Category>> mutableCategoriesList;
     private CategoriesRepository mRepo;
     private MutableLiveData<Boolean> mIsUpdating = new MutableLiveData<>();
 
     public void init() {
-        if (mNicePlaces != null) {
+        if (mutableCategoriesList != null) {
             return;
         }
         mRepo = CategoriesRepository.getInstance();
-        mNicePlaces = mRepo.getNicePlaces();
+        mutableCategoriesList = mRepo.getMutableCategoriesList();
     }
 
     public void addNewValue(final Category category) {
@@ -32,9 +32,9 @@ public class MainActivityViewModel  extends ViewModel {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                List<Category> currentPlaces = mNicePlaces.getValue();
-                currentPlaces.add(category);
-                mNicePlaces.postValue(currentPlaces);
+                List<Category> currentCategoriesList = mutableCategoriesList.getValue();
+                currentCategoriesList.add(category);
+                mutableCategoriesList.postValue(currentCategoriesList);
                 mIsUpdating.postValue(false);
             }
 
@@ -52,7 +52,7 @@ public class MainActivityViewModel  extends ViewModel {
     }
 
     public LiveData<List<Category>> getNicePlaces() {
-        return mNicePlaces;
+        return mutableCategoriesList;
     }
 
 
