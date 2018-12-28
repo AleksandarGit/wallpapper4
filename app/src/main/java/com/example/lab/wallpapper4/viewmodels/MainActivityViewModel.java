@@ -51,7 +51,7 @@ public class MainActivityViewModel  extends ViewModel {
         }.execute();
     }
 
-    public LiveData<List<Category>> getNicePlaces() {
+    public LiveData<List<Category>> getCategories() {
         return mutableCategoriesList;
     }
 

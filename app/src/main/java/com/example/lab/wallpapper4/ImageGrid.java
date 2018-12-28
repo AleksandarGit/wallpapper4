@@ -2,6 +2,7 @@ package com.example.lab.wallpapper4;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -15,14 +16,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lab.wallpapper4.adapters.WallpaperAdapter;
+import com.example.lab.wallpapper4.models.Category;
 import com.example.lab.wallpapper4.models.Wallpaper;
 import com.example.lab.wallpapper4.repositories.WallpaperRepository;
 import com.example.lab.wallpapper4.viewmodels.ImageGridViewModel;
 import com.google.android.gms.ads.InterstitialAd;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ImageGrid extends AppCompatActivity implements View.OnClickListener {
+public class ImageGrid extends AppCompatActivity{
 
     TextView tvGridElem;
     ImageView ivGridElem;
@@ -31,31 +34,27 @@ public class ImageGrid extends AppCompatActivity implements View.OnClickListener
     private WallpaperAdapter mWallpaperAdapter;
     private ImageGridViewModel imageGridViewModel;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_grid);
 
-        tvGridElem = findViewById(R.id.tvGridElem);
-        ivGridElem = findViewById(R.id.ivGridElem);
+        tvGridElem = (TextView) findViewById(R.id.tvGridElem);
+        ivGridElem = (ImageView) findViewById(R.id.ivGridElem);
+        wallpaperRecyclerView = (RecyclerView) findViewById(R.id.wallpaperGridrecycler);
 
-        wallpaperRecyclerView = findViewById(R.id.wallpaperGridrecycler);
-
+        initViewModel();
         initRecyclerView();
 
     }
 
-
-    private void initRecyclerView() {
-        mWallpaperAdapter = new WallpaperAdapter(this, imageGridViewModel.getNicePlaces().getValue());
-        RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(this, 5);
-        wallpaperRecyclerView.setLayoutManager(gridLayoutManager);
-        wallpaperRecyclerView.setAdapter(mWallpaperAdapter);
+    private void initViewModel(){
+        int imageIndex = this.getIntent().getExtras().getInt("Value1");
 
         imageGridViewModel = ViewModelProviders.of(this).get(ImageGridViewModel.class);
-        Integer imageIndex = this.getIntent().getIntExtra("Value1", R.drawable.cat);
         imageGridViewModel.init(imageIndex);
-        imageGridViewModel.getNicePlaces().observe(this, (new Observer<List<Wallpaper>>() {
+        imageGridViewModel.getWallpapers().observe(this, (new Observer<List<Wallpaper>>() {
             @Override
             public void onChanged(@Nullable List<Wallpaper> subCategories) {
                 mWallpaperAdapter.notifyDataSetChanged();
@@ -65,17 +64,23 @@ public class ImageGrid extends AppCompatActivity implements View.OnClickListener
             @Override
             public void onChanged(@Nullable Boolean aBoolean) {
                 if (!aBoolean) {
-                    wallpaperRecyclerView.smoothScrollToPosition(imageGridViewModel.getNicePlaces().getValue().size() - 1);
+                    wallpaperRecyclerView.smoothScrollToPosition(imageGridViewModel.getWallpapers().getValue().size() - 1);
                 }
             }
         });
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(this, ImageSolo.class);
-        intent.putExtra("ValueOfWallpaper", v.getId());
+
+    private void initRecyclerView() {
+        mWallpaperAdapter = new WallpaperAdapter(this, imageGridViewModel.getWallpapers().getValue());
+        RecyclerView.LayoutManager gridLayoutManager = new GridLayoutManager(this, 3);
+        wallpaperRecyclerView.setLayoutManager(gridLayoutManager);
+        wallpaperRecyclerView.setAdapter(mWallpaperAdapter);
+
+
     }
+
+
 }
 
 

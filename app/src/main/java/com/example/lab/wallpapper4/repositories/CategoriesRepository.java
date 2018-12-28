@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CategoriesRepository {
     private static CategoriesRepository instance;
-    private ArrayList<Category> dataSet = new ArrayList<>();
+    private ArrayList<Category> categories = new ArrayList<>();
 
     public static CategoriesRepository getInstance(){
         if(instance == null){
@@ -24,19 +24,18 @@ public class CategoriesRepository {
     public MutableLiveData<List<Category>> getMutableCategoriesList(){
         setCategories();
         MutableLiveData<List<Category>> data = new MutableLiveData<>();
-        data.setValue(dataSet);
+        data.setValue(categories);
         return data;
     }
 
     private void setCategories(){
-        dataSet.add(new Category("Nature", R.drawable.flora));
-        dataSet.add(new Category("Landscapes", R.drawable.lotus));
-        dataSet.add(new Category("Cars", R.drawable.car ));
-        dataSet.add(new Category("Fantasy", R.drawable.tree));
-        dataSet.add(new Category("Beauties", R.drawable.girl));
+        ArrayList<Category> categoriesAdd = new ArrayList<>();
+        categoriesAdd.add(new Category("Nature", R.drawable.cat));
+        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
+        categoriesAdd.add(new Category("Cars", R.drawable.car ));
+        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
+        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
+        categories = categoriesAdd;
 
     }
 }
-/*
-
- */

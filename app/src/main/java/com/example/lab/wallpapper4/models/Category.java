@@ -7,10 +7,12 @@ import lombok.Data;
 @Data
 public class Category {
     private String name;
-    private Integer imagePath;
+    private int imagePath;
 
-    public Category(String name, Integer imageCat){
-        name = name;
-        imagePath = imageCat;
+    public Category(){}
+
+    public Category(String name, int imageCat){
+        this.name = name;
+        this.imagePath = imageCat;
     }
 }

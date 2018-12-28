@@ -25,8 +25,9 @@ public class ImageSolo extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_solo);
-        wallpaper = findViewById(R.id.ivSoloImage);
-        Integer wallpaperIndex = this.getIntent().getIntExtra("ValueOfWallpaper", R.drawable.girl);
+        wallpaper = (ImageView) findViewById(R.id.ivSoloImage);
+        int wallpaperIndex = this.getIntent().getExtras().getInt("Value1");
+
         wallpaper.setImageResource(wallpaperIndex);
         mMyButton = findViewById(R.id.fab);
 

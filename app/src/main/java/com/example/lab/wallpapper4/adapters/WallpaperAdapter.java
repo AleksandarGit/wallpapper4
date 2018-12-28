@@ -1,7 +1,9 @@
 package com.example.lab.wallpapper4.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,61 +11,60 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import com.example.lab.wallpapper4.ImageSolo;
 import com.example.lab.wallpapper4.R;
 import com.example.lab.wallpapper4.models.Wallpaper;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class WallpaperAdapter extends RecyclerView.Adapter <WallpaperAdapter.ViewHolder> {
-
+public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.MyViewHolder> {
     private List<Wallpaper> wallpapers;
-    Context activity;
+    private Context activity;
 
 
-    public WallpaperAdapter(Context context, List<Wallpaper> list){
+    public WallpaperAdapter(Context context, List<Wallpaper> list) {
         wallpapers = list;
         activity = context;
-
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView ivGridElem;
         TextView tvGridElem;
-        public ViewHolder(@NonNull final View itemView) {
+        CardView cardView;
+
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             tvGridElem = itemView.findViewById(R.id.tvGridElem);
             ivGridElem = itemView.findViewById(R.id.ivGridElem);
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    activity.onItemClicked(wallpapers.indexOf((Wallpaper) v.getTag()));
-//                }
-//            });
+            cardView = itemView.findViewById(R.id.card_view_grid);
         }
     }
+
     @NonNull
     @Override
-    public WallpaperAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.grid_element, viewGroup, false);
-        return new ViewHolder(view);
+    public WallpaperAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(activity).inflate(R.layout.grid_element, viewGroup, false);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WallpaperAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.itemView.setTag(wallpapers.get(i));
+    public void onBindViewHolder(@NonNull WallpaperAdapter.MyViewHolder viewHolder, final int i) {
         viewHolder.tvGridElem.setText(wallpapers.get(i).getImageName());
-        RequestOptions defaultOptions = new RequestOptions()
-                .error(R.drawable.ic_launcher_background);
-        Glide.with(viewHolder.itemView.getContext())
-                .setDefaultRequestOptions(defaultOptions)
-                .load(wallpapers.get(i).getImagePath())
-                .into(viewHolder.ivGridElem);
+        Picasso.with(viewHolder.cardView.getContext()).load(wallpapers.get(i).getImagePath()).into(viewHolder.ivGridElem);
+        viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, ImageSolo.class);
+                intent.putExtra("Value1", wallpapers.get(i).getImagePath());
+                activity.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return wallpapers.size();
     }
+
 }

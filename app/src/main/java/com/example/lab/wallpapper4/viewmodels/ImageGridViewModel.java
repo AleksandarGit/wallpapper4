@@ -13,28 +13,28 @@ import java.util.List;
 
 public class ImageGridViewModel extends ViewModel {
 
-    private MutableLiveData<List<Wallpaper>> mSubCategories;
+    private MutableLiveData<List<Wallpaper>> mWallpapers;
     private WallpaperRepository mRepo;
     private MutableLiveData<Boolean> mIsUpdating = new MutableLiveData<>();
 
-    public void init(Integer index) {
-        if (mSubCategories != null) {
+    public void init(int index) {
+        if (mWallpapers != null) {
             return;
         }
-        mRepo = WallpaperRepository.getInstance(index);
-        mSubCategories = mRepo.getImages();
+        mRepo = WallpaperRepository.getInstance();
+        mWallpapers = mRepo.getImages(index);
     }
 
-    public void addNewValue(final Wallpaper wallpaper) {
+    public void addNewWallpaper(final Wallpaper wallpaper) {
         mIsUpdating.setValue(true);
 
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                List<Wallpaper> currentSubcategories = mSubCategories.getValue();
+                List<Wallpaper> currentSubcategories = mWallpapers.getValue();
                 currentSubcategories.add(wallpaper);
-                mSubCategories.postValue(currentSubcategories);
+                mWallpapers.postValue(currentSubcategories);
                 mIsUpdating.postValue(false);
             }
 
@@ -51,8 +51,8 @@ public class ImageGridViewModel extends ViewModel {
         }.execute();
     }
 
-    public LiveData<List<Wallpaper>> getNicePlaces() {
-        return mSubCategories;
+    public LiveData<List<Wallpaper>> getWallpapers() {
+        return mWallpapers;
     }
 
 

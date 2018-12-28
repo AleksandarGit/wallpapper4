@@ -8,14 +8,17 @@ import lombok.Data;
 @Data
 public class Wallpaper {
     private String imageName;
-    private Integer imagePath;
+    private int imagePath;
     private Category imageCategory;
     private List<String> imageTags;
-    public Wallpaper(String name, Integer path, Category category, ArrayList<String> tags){
-        imageName = name;
-        imagePath = path;
-        imageCategory = category;
-        imageTags = tags;
+
+    public Wallpaper(){}
+    
+    public Wallpaper(String name, int path, Category category, ArrayList<String> tags){
+        this.imageName = name;
+        this.imagePath = path;
+        this.imageCategory = category;
+        this.imageTags = tags;
     }
 
 }
