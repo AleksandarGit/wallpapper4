@@ -14,14 +14,13 @@ import java.util.List;
 public class ImageGridViewModel extends ViewModel {
 
     private MutableLiveData<List<Wallpaper>> mWallpapers;
-    private WallpaperRepository mRepo;
     private MutableLiveData<Boolean> mIsUpdating = new MutableLiveData<>();
 
     public void init(int index) {
         if (mWallpapers != null) {
             return;
         }
-        mRepo = WallpaperRepository.getInstance();
+        WallpaperRepository mRepo = WallpaperRepository.getInstance();
         mWallpapers = mRepo.getImages(index);
     }
 

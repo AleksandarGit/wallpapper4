@@ -14,14 +14,13 @@ import java.util.List;
 public class MainActivityViewModel  extends ViewModel {
 
     private MutableLiveData<List<Category>> mutableCategoriesList;
-    private CategoriesRepository mRepo;
     private MutableLiveData<Boolean> mIsUpdating = new MutableLiveData<>();
 
     public void init() {
         if (mutableCategoriesList != null) {
             return;
         }
-        mRepo = CategoriesRepository.getInstance();
+        CategoriesRepository mRepo = CategoriesRepository.getInstance();
         mutableCategoriesList = mRepo.getMutableCategoriesList();
     }
 

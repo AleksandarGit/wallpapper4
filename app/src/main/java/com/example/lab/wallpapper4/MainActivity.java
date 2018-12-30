@@ -2,7 +2,6 @@ package com.example.lab.wallpapper4;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.lab.wallpapper4.adapters.CategoryAdapter;
 import com.example.lab.wallpapper4.models.Category;
 import com.example.lab.wallpapper4.viewmodels.MainActivityViewModel;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView() {
-        mAdapter = new CategoryAdapter(mainActivityViewModel.getCategories().getValue(), this);
+        mAdapter = new CategoryAdapter(mainActivityViewModel.getCategories().getValue(), this, Glide.with(this));
         RecyclerView.LayoutManager linearLayoutManager = new LinearLayoutManager(this);
         categoryRecyclerView.setLayoutManager(linearLayoutManager);
         categoryRecyclerView.setAdapter(mAdapter);

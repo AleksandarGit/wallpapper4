@@ -11,9 +11,7 @@ public class Wallpaper {
     private int imagePath;
     private Category imageCategory;
     private List<String> imageTags;
-
-    public Wallpaper(){}
-    
+        
     public Wallpaper(String name, int path, Category category, ArrayList<String> tags){
         this.imageName = name;
         this.imagePath = path;

@@ -9,33 +9,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.signature.ObjectKey;
 import com.example.lab.wallpapper4.ImageSolo;
 import com.example.lab.wallpapper4.R;
 import com.example.lab.wallpapper4.models.Wallpaper;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import static com.bumptech.glide.load.DecodeFormat.PREFER_ARGB_8888;
 
 public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.MyViewHolder> {
     private List<Wallpaper> wallpapers;
     private Context activity;
+    private RequestManager glide;
 
 
-    public WallpaperAdapter(Context context, List<Wallpaper> list) {
+    public WallpaperAdapter(Context context, RequestManager glide, List<Wallpaper> list) {
         wallpapers = list;
         activity = context;
+        this.glide = glide;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    static class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView ivGridElem;
-        TextView tvGridElem;
         CardView cardView;
 
-        public MyViewHolder(@NonNull final View itemView) {
+         MyViewHolder(@NonNull final View itemView) {
             super(itemView);
-            tvGridElem = itemView.findViewById(R.id.tvGridElem);
             ivGridElem = itemView.findViewById(R.id.ivGridElem);
             cardView = itemView.findViewById(R.id.card_view_grid);
         }
@@ -50,8 +55,18 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull WallpaperAdapter.MyViewHolder viewHolder, final int i) {
-        viewHolder.tvGridElem.setText(wallpapers.get(i).getImageName());
-        Picasso.with(viewHolder.cardView.getContext()).load(wallpapers.get(i).getImagePath()).into(viewHolder.ivGridElem);
+        RequestOptions myOptions = new RequestOptions()
+                .placeholder(R.color.colorPrimaryLight)
+                .error(R.color.chart_grey)
+                .format(PREFER_ARGB_8888)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .signature(new ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)));
+        glide
+                .load(wallpapers.get(i).getImagePath())
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .thumbnail(0.1f)
+                .apply(myOptions)
+                .into(viewHolder.ivGridElem);
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
