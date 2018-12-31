@@ -29,7 +29,17 @@
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity android:name=".ImageGrid" />
-        <activity android:name=".ImageSolo"></activity>
+        <activity android:name=".ImageSolo"/>
+        <provider
+            android:name=".utility.MyFileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths"/>
+        </provider>
+
     </application>
 
 </manifest>

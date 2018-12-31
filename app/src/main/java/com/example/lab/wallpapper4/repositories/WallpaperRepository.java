@@ -42,7 +42,7 @@ public class WallpaperRepository {
                 ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "cat"));
                 Category nature = new Category("Cats", R.drawable.cat);
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 30; i++) {
                     dataSets.add(new Wallpaper("Cats", R.drawable.cat, nature, wallpaperOneTags));
                 }
                 dataSet=dataSets;
@@ -53,7 +53,7 @@ public class WallpaperRepository {
                 ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "landscape"));
                 Category nature = new Category("Nature", R.drawable.flora);
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 30; i++) {
                     dataSets.add(new Wallpaper("Nature", R.drawable.flora, nature, wallpaperOneTags));
                 }
                 dataSet=dataSets;
@@ -63,7 +63,7 @@ public class WallpaperRepository {
                 ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "jaguar"));
                 Category car = new Category("Car", R.drawable.car);
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 30; i++) {
                     dataSets.add(new Wallpaper("Car", R.drawable.car, car, wallpaperOneTags));
                 }
                 dataSet=dataSets;
@@ -73,7 +73,7 @@ public class WallpaperRepository {
                 ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "unicorn"));
                 Category fantasy = new Category("Fantasy", R.drawable.cosmea);
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 30; i++) {
                     dataSets.add(new Wallpaper("Fantasy", R.drawable.cosmea, fantasy, wallpaperOneTags));
                 }
                 dataSet=dataSets;
@@ -84,7 +84,7 @@ public class WallpaperRepository {
                 ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "cute"));
                 Category girls = new Category("Girl", R.drawable.girl);
 
-                for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 30; i++) {
                     dataSets.add(new Wallpaper("Girl", R.drawable.girl, girls, wallpaperOneTags));
                 }
                 dataSet=dataSets;

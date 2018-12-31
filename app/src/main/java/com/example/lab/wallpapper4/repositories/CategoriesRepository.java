@@ -35,6 +35,21 @@ public class CategoriesRepository {
         categoriesAdd.add(new Category("Cars", R.drawable.car ));
         categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
         categoriesAdd.add(new Category("Beauties", R.drawable.girl));
+        categoriesAdd.add(new Category("Nature", R.drawable.cat));
+        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
+        categoriesAdd.add(new Category("Cars", R.drawable.car ));
+        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
+        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
+        categoriesAdd.add(new Category("Nature", R.drawable.cat));
+        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
+        categoriesAdd.add(new Category("Cars", R.drawable.car ));
+        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
+        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
+        categoriesAdd.add(new Category("Nature", R.drawable.cat));
+        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
+        categoriesAdd.add(new Category("Cars", R.drawable.car ));
+        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
+        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
         categories = categoriesAdd;
 
     }
