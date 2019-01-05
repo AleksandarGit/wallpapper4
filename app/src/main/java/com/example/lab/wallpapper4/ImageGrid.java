@@ -2,17 +2,26 @@ package com.example.lab.wallpapper4;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.lab.wallpapper4.adapters.WallpaperAdapter;
 import com.example.lab.wallpapper4.models.Wallpaper;
+import com.example.lab.wallpapper4.utility.CustomTypeFaceSpan;
 import com.example.lab.wallpapper4.viewmodels.ImageGridViewModel;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 import java.util.List;
 
@@ -29,7 +38,12 @@ public class ImageGrid extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_grid);
-
+        Toolbar myToolbar = findViewById(R.id.my_toolbar2);
+        SpannableString s = new SpannableString(getResources().getString(R.string.app_name));
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Aileron-Heavy.otf");
+        s.setSpan(new CustomTypeFaceSpan("", font),0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        myToolbar.setTitle(s);
+        setSupportActionBar(myToolbar);
 
         ivGridElem = findViewById(R.id.ivGridElem);
         wallpaperRecyclerView = findViewById(R.id.wallpaperGridrecycler);
@@ -37,6 +51,11 @@ public class ImageGrid extends AppCompatActivity{
         initViewModel();
         initRecyclerView();
 
+        AdView mAdView = findViewById(R.id.adID);
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        mAdView.loadAd(adRequest);
     }
 
     private void initViewModel(){

@@ -38,33 +38,33 @@ public class WallpaperRepository {
     private void setWallpapers(int rDotDrawable) {
         ArrayList<Wallpaper> dataSets = new ArrayList<>();
         switch (rDotDrawable) {
-            case R.drawable.cat: {
-                ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "cat"));
-                Category nature = new Category("Cats", R.drawable.cat);
+            case R.drawable.bw: {
+                ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "white"));
+                Category bw = new Category("Black & White", R.drawable.bw);
 
                 for (int i = 0; i < 30; i++) {
-                    dataSets.add(new Wallpaper("Cats", R.drawable.cat, nature, wallpaperOneTags));
+                    dataSets.add(new Wallpaper("Black and White", R.drawable.bw, bw, wallpaperOneTags));
                 }
                 dataSet=dataSets;
                 break;
 
             }
-            case R.drawable.flora: {
-                ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "landscape"));
-                Category nature = new Category("Nature", R.drawable.flora);
+            case R.drawable.adventure: {
+                ArrayList<String> wallpaperTwoTags = new ArrayList<>(Arrays.asList("nice", "adventure", "landscape"));
+                Category adventure = new Category("Adventure", R.drawable.adventure);
 
                 for (int i = 0; i < 30; i++) {
-                    dataSets.add(new Wallpaper("Nature", R.drawable.flora, nature, wallpaperOneTags));
+                    dataSets.add(new Wallpaper("Adventure", R.drawable.adventure, adventure, wallpaperTwoTags));
                 }
                 dataSet=dataSets;
                 break;
             }
-            case R.drawable.car: {
-                ArrayList<String> wallpaperOneTags = new ArrayList<>(Arrays.asList("nice", "black", "jaguar"));
-                Category car = new Category("Car", R.drawable.car);
+            case R.drawable.nature: {
+                ArrayList<String> wallpaperThreeTags = new ArrayList<>(Arrays.asList("nice", "black", "jaguar"));
+                Category nature = new Category("Nature", R.drawable.nature);
 
                 for (int i = 0; i < 30; i++) {
-                    dataSets.add(new Wallpaper("Car", R.drawable.car, car, wallpaperOneTags));
+                    dataSets.add(new Wallpaper("Nature", R.drawable.nature, nature, wallpaperThreeTags));
                 }
                 dataSet=dataSets;
                 break;

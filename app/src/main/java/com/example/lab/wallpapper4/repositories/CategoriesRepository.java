@@ -30,26 +30,15 @@ public class CategoriesRepository {
 
     private void setCategories(){
         ArrayList<Category> categoriesAdd = new ArrayList<>();
-        categoriesAdd.add(new Category("Nature", R.drawable.cat));
-        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
-        categoriesAdd.add(new Category("Cars", R.drawable.car ));
-        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
-        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
-        categoriesAdd.add(new Category("Nature", R.drawable.cat));
-        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
-        categoriesAdd.add(new Category("Cars", R.drawable.car ));
-        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
-        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
-        categoriesAdd.add(new Category("Nature", R.drawable.cat));
-        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
-        categoriesAdd.add(new Category("Cars", R.drawable.car ));
-        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
-        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
-        categoriesAdd.add(new Category("Nature", R.drawable.cat));
-        categoriesAdd.add(new Category("Landscapes", R.drawable.flora));
-        categoriesAdd.add(new Category("Cars", R.drawable.car ));
-        categoriesAdd.add(new Category("Fantasy", R.drawable.cosmea));
-        categoriesAdd.add(new Category("Beauties", R.drawable.girl));
+        categoriesAdd.add(new Category("Nature", R.drawable.nature));
+        categoriesAdd.add(new Category("Adventure", R.drawable.adventure));
+        categoriesAdd.add(new Category("BW", R.drawable.bw));
+        categoriesAdd.add(new Category("Nature", R.drawable.nature));
+        categoriesAdd.add(new Category("Adventure", R.drawable.adventure));
+        categoriesAdd.add(new Category("BW", R.drawable.bw));
+        categoriesAdd.add(new Category("Nature", R.drawable.nature));
+        categoriesAdd.add(new Category("Adventure", R.drawable.adventure));
+        categoriesAdd.add(new Category("BW", R.drawable.bw));
         categories = categoriesAdd;
 
     }

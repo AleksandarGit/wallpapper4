@@ -24,31 +24,6 @@ public class ImageGridViewModel extends ViewModel {
         mWallpapers = mRepo.getImages(index);
     }
 
-    public void addNewWallpaper(final Wallpaper wallpaper) {
-        mIsUpdating.setValue(true);
-
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                List<Wallpaper> currentSubcategories = mWallpapers.getValue();
-                currentSubcategories.add(wallpaper);
-                mWallpapers.postValue(currentSubcategories);
-                mIsUpdating.postValue(false);
-            }
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        }.execute();
-    }
 
     public LiveData<List<Wallpaper>> getWallpapers() {
         return mWallpapers;

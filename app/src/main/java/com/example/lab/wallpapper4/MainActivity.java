@@ -1,18 +1,24 @@
 package com.example.lab.wallpapper4;
 
+
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.lab.wallpapper4.adapters.CategoryAdapter;
 import com.example.lab.wallpapper4.models.Category;
+import com.example.lab.wallpapper4.utility.CustomTypeFaceSpan;
 import com.example.lab.wallpapper4.viewmodels.MainActivityViewModel;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -29,10 +35,18 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel mainActivityViewModel;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        SpannableString s = new SpannableString(getResources().getString(R.string.app_name));
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Aileron-Heavy.otf");
+        s.setSpan(new CustomTypeFaceSpan("", font),0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        myToolbar.setTitle(s);
+        setSupportActionBar(myToolbar);
 
         tvNameCard = findViewById(R.id.tvNameCard);
         imageCard = findViewById(R.id.imageCard);

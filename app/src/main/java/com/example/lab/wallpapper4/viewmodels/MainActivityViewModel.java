@@ -24,32 +24,6 @@ public class MainActivityViewModel  extends ViewModel {
         mutableCategoriesList = mRepo.getMutableCategoriesList();
     }
 
-    public void addNewValue(final Category category) {
-        mIsUpdating.setValue(true);
-
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected void onPostExecute(Void aVoid) {
-                super.onPostExecute(aVoid);
-                List<Category> currentCategoriesList = mutableCategoriesList.getValue();
-                currentCategoriesList.add(category);
-                mutableCategoriesList.postValue(currentCategoriesList);
-                mIsUpdating.postValue(false);
-            }
-
-            @Override
-            protected Void doInBackground(Void... voids) {
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                return null;
-            }
-        }.execute();
-    }
-
     public LiveData<List<Category>> getCategories() {
         return mutableCategoriesList;
     }
