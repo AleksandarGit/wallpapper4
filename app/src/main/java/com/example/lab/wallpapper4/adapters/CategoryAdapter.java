@@ -44,7 +44,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.MyView
 
     @Override public void onBindViewHolder(MyViewHolder holder,final int position) {
 
-        //holder.name.setText(categories.get(position).getName());
+        holder.name.setText(categories.get(position).getName());
         RequestOptions myOptions = new RequestOptions()
                 .placeholder(R.color.colorPrimaryLight)
                 .error(R.color.chart_grey)

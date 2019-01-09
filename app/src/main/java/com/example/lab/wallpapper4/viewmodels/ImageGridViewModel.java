@@ -24,11 +24,9 @@ public class ImageGridViewModel extends ViewModel {
         mWallpapers = mRepo.getImages(index);
     }
 
-
     public LiveData<List<Wallpaper>> getWallpapers() {
         return mWallpapers;
     }
-
 
     public LiveData<Boolean> getIsUpdating() {
         return mIsUpdating;

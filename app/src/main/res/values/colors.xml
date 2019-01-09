@@ -9,4 +9,5 @@
     <color name="colorIcons">#FFFFFF</color>
     <color name="colorDivider">#BDBDBD</color>
     <color name="chart_grey">#e0e3e4</color>
+    <color name="toolbar_color_control_normal">#FFFFFF</color>
 </resources>

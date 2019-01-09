@@ -3,6 +3,8 @@ package com.example.lab.wallpapper4.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.lab.wallpapper4.ImageSolo;
 import com.example.lab.wallpapper4.R;
+import com.example.lab.wallpapper4.models.Category;
 import com.example.lab.wallpapper4.models.Wallpaper;
 
 import java.util.List;
@@ -39,10 +42,14 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.MyVi
         ImageView ivGridElem;
         CardView cardView;
 
-         MyViewHolder(@NonNull final View itemView) {
+
+        MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             ivGridElem = itemView.findViewById(R.id.ivGridElem);
             cardView = itemView.findViewById(R.id.card_view_grid);
+
+
+
         }
     }
 
@@ -55,18 +62,22 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull WallpaperAdapter.MyViewHolder viewHolder, final int i) {
+
         RequestOptions myOptions = new RequestOptions()
                 .placeholder(R.color.colorPrimaryLight)
                 .error(R.color.chart_grey)
                 .format(PREFER_ARGB_8888)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                 .signature(new ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)));
+
         glide
                 .load(wallpapers.get(i).getImagePath())
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .thumbnail(0.1f)
                 .apply(myOptions)
                 .into(viewHolder.ivGridElem);
+
+
         viewHolder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

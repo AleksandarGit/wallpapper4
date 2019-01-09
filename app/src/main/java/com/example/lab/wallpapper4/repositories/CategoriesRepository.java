@@ -30,15 +30,17 @@ public class CategoriesRepository {
 
     private void setCategories(){
         ArrayList<Category> categoriesAdd = new ArrayList<>();
+        categoriesAdd.add(new Category("The Art of Abstract", R.drawable.abstract0));
+        categoriesAdd.add(new Category("Fruits", R.drawable.fruits0));
+        categoriesAdd.add(new Category("Cars", R.drawable.cars0));
         categoriesAdd.add(new Category("Nature", R.drawable.nature));
-        categoriesAdd.add(new Category("Adventure", R.drawable.adventure));
-        categoriesAdd.add(new Category("BW", R.drawable.bw));
+        categoriesAdd.add(new Category("Abstract", R.drawable.abstract0));
+        categoriesAdd.add(new Category("Fruits", R.drawable.fruits0));
+        categoriesAdd.add(new Category("Cars", R.drawable.cars0));
         categoriesAdd.add(new Category("Nature", R.drawable.nature));
-        categoriesAdd.add(new Category("Adventure", R.drawable.adventure));
-        categoriesAdd.add(new Category("BW", R.drawable.bw));
-        categoriesAdd.add(new Category("Nature", R.drawable.nature));
-        categoriesAdd.add(new Category("Adventure", R.drawable.adventure));
-        categoriesAdd.add(new Category("BW", R.drawable.bw));
+        categoriesAdd.add(new Category("Abstract", R.drawable.abstract0));
+        categoriesAdd.add(new Category("Fruits", R.drawable.fruits0));
+        categoriesAdd.add(new Category("Cars", R.drawable.cars0));
         categories = categoriesAdd;
 
     }

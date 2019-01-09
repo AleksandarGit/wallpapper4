@@ -14,8 +14,8 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_marginBottom="8dp"
-        android:background="?attr/colorPrimary"
+        android:background="#000000"
+        app:titleTextColor="#FFFFFF"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintBottom_toTopOf="@+id/mainCategoryList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,14 +23,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-
         />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/mainCategoryList"
         android:layout_width="0dp"
-        android:layout_height="442dp"
+        android:layout_height="0dp"
         android:layout_marginTop="80dp"
+        android:background="#000000"
         app:layout_constraintBottom_toTopOf="@+id/adID"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -45,6 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
         android:layout_weight="1"
+        android:background="#000000"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"

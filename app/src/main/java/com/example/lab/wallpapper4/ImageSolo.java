@@ -10,15 +10,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.style.TypefaceSpan;
 import android.util.Log;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.webkit.MimeTypeMap;
 import android.widget.ImageView;
 
@@ -26,14 +25,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.transition.Transition;
 import com.bumptech.glide.signature.ObjectKey;
 import com.example.lab.wallpapper4.utility.CustomTypeFaceSpan;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
-import com.google.android.gms.ads.MobileAds;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,31 +37,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 
-import me.msfjarvis.apprate.AppRate;
-
 import static com.bumptech.glide.load.DecodeFormat.PREFER_ARGB_8888;
 
 public class ImageSolo extends AppCompatActivity {
-    Bitmap bitmap = null;
-
+    private Bitmap bitmap = null;
+    private Toolbar myToolbar;
     private InterstitialAd mInterstitialAd;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_image_solo);
 
-        new AppRate(this)
-                .setMinDaysUntilPrompt(0)
-                .setMinLaunchesUntilPrompt(1)
-                .setShowIfAppHasCrashed(false)
-                .init();
-
-        Toolbar myToolbar = findViewById(R.id.my_toolbar3);
+        myToolbar = findViewById(R.id.my_toolbar3);
         SpannableString s = new SpannableString(getResources().getString(R.string.app_name));
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Aileron-Heavy.otf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Aileron-Regular.otf");
         s.setSpan(new CustomTypeFaceSpan("", font),0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         myToolbar.setTitle(s);
         setSupportActionBar(myToolbar);
@@ -78,6 +65,7 @@ public class ImageSolo extends AppCompatActivity {
         wallpaper.setImageBitmap(bitmap);
 
         RequestOptions myOptions = new RequestOptions()
+                .fitCenter()
                 .placeholder(R.color.colorPrimaryLight)
                 .error(R.color.chart_grey)
                 .format(PREFER_ARGB_8888)
@@ -85,12 +73,11 @@ public class ImageSolo extends AppCompatActivity {
                 .signature(new ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)));
         Glide.with(this)
                 .load(wallpaperIndex)
+
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .thumbnail(0.1f)
                 .apply(myOptions)
                 .into(wallpaper);
-        FloatingActionButton mMyButton = findViewById(R.id.fab);
-
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -98,39 +85,35 @@ public class ImageSolo extends AppCompatActivity {
 
         bitmap = BitmapFactory.decodeResource(getResources(), wallpaperIndex);
         wallpaper.setImageBitmap(bitmap);
-        mMyButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (mInterstitialAd.isLoaded()) {
-                    mInterstitialAd.show();
-                } else {
-                    Log.d("TAG", "The interstitial wasn't loaded yet.");
-                }
-
-                shareWallpaper(bitmap);
-                finish();
-
-            }
-        });
-
-        //MobileAds.initialize(this, "ca-app-pub-3940256099942544~3347511713");
 
         AdView mAdView = findViewById(R.id.adID);
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .build();
         mAdView.loadAd(adRequest);
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bar, menu);
+        return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            if (mInterstitialAd.isLoaded()) {
+                mInterstitialAd.show();
+            } else {
+                Log.d("TAG", "The interstitial wasn't loaded yet.");
+            }
+            shareWallpaper(bitmap);
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
     private void shareWallpaper(Bitmap bitmap) {
-
-//        Glide.with(this)
-//                .asBitmap()
-//                .load(w)
-//                .into(new SimpleTarget<Bitmap>() {
-//                          @Override
-//                          public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
 
         MimeTypeMap map = MimeTypeMap.getSingleton();
         String path = getLocalBitmapUri(bitmap).toString();
@@ -157,8 +140,6 @@ public class ImageSolo extends AppCompatActivity {
             startActivity(Intent.createChooser(intent, "Set As"));
         }
 
-//                      }}
-//                );
     }
 
     private Uri getLocalBitmapUri(Bitmap bmp) {

@@ -26,6 +26,8 @@ import com.google.android.gms.ads.MobileAds;
 
 import java.util.List;
 
+import me.msfjarvis.apprate.AppRate;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView tvNameCard;
@@ -40,10 +42,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        new AppRate(this)
+                .setMinDaysUntilPrompt(5)
+                .setMinLaunchesUntilPrompt(5)
+                .setShowIfAppHasCrashed(false)
+                .init();
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         SpannableString s = new SpannableString(getResources().getString(R.string.app_name));
-        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Aileron-Heavy.otf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Aileron-Regular.otf");
         s.setSpan(new CustomTypeFaceSpan("", font),0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         myToolbar.setTitle(s);
         setSupportActionBar(myToolbar);
