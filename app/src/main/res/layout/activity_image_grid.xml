@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/grid"
     android:layout_width="match_parent"
@@ -19,11 +19,22 @@
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_gravity="bottom|center"
+            android:layout_gravity="top|center"
             android:background="#000000"
             app:expandedTitleGravity="top|center_horizontal"
-            app:expandedTitleMarginTop="0dp"
+            app:expandedTitleMarginTop="8dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Headline"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <ImageView
+                android:id="@+id/ivCategoryInGrid"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="bottom|fill_horizontal"
+                android:scaleType="centerCrop"
+                android:src="@drawable/cars0"
+                app:layout_collapseMode="parallax" />
+
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/my_toolbar2"
@@ -31,20 +42,11 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="top|left"
                 android:layout_margin="0dp"
-                android:background="#000000"
+                android:background="@android:color/transparent"
                 android:padding="0dp"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-            <ImageView
-                android:id="@+id/ivCategoryInGrid"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                android:layout_gravity="bottom|fill_horizontal"
-                android:src="@drawable/cars0" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -64,16 +66,14 @@
         android:id="@+id/adID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="0dp"
         android:background="#000000"
-        app:adSize="BANNER"
+        app:adSize="SMART_BANNER"
         app:adUnitId="ca-app-pub-3940256099942544/6300978111"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </com.google.android.gms.ads.AdView>
-
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.design.widget.CoordinatorLayout>

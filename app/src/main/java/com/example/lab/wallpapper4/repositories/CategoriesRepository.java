@@ -30,17 +30,17 @@ public class CategoriesRepository {
 
     private void setCategories(){
         ArrayList<Category> categoriesAdd = new ArrayList<>();
-        categoriesAdd.add(new Category("The Art of Abstract", R.drawable.abstract0));
+
+        categoriesAdd.add(new Category("Aircraft", R.drawable.aircraft0));
+        categoriesAdd.add(new Category("Animals", R.drawable.animals0));
+        categoriesAdd.add(new Category("Bikes", R.drawable.bikes0));
+        categoriesAdd.add(new Category("City Lights", R.drawable.citylights0));
+        categoriesAdd.add(new Category("Flowers", R.drawable.flowers0));
         categoriesAdd.add(new Category("Fruits", R.drawable.fruits0));
-        categoriesAdd.add(new Category("Cars", R.drawable.cars0));
-        categoriesAdd.add(new Category("Nature", R.drawable.nature));
-        categoriesAdd.add(new Category("Abstract", R.drawable.abstract0));
-        categoriesAdd.add(new Category("Fruits", R.drawable.fruits0));
-        categoriesAdd.add(new Category("Cars", R.drawable.cars0));
-        categoriesAdd.add(new Category("Nature", R.drawable.nature));
-        categoriesAdd.add(new Category("Abstract", R.drawable.abstract0));
-        categoriesAdd.add(new Category("Fruits", R.drawable.fruits0));
-        categoriesAdd.add(new Category("Cars", R.drawable.cars0));
+        categoriesAdd.add(new Category("Space", R.drawable.rsz_1space0));
+        categoriesAdd.add(new Category("Sky", R.drawable.skycloud0));
+        categoriesAdd.add(new Category("Proba", R.drawable.lotus));
+
         categories = categoriesAdd;
 
     }

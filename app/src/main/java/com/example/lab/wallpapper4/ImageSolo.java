@@ -53,9 +53,13 @@ public class ImageSolo extends AppCompatActivity {
         myToolbar = findViewById(R.id.my_toolbar3);
         SpannableString s = new SpannableString(getResources().getString(R.string.app_name));
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/Aileron-Regular.otf");
-        s.setSpan(new CustomTypeFaceSpan("", font),0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        s.setSpan(new CustomTypeFaceSpan("", font), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         myToolbar.setTitle(s);
         setSupportActionBar(myToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         final int wallpaperIndex = this.getIntent().getExtras().getInt("Value1");
 
@@ -93,6 +97,7 @@ public class ImageSolo extends AppCompatActivity {
         mAdView.loadAd(adRequest);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.bar, menu);
@@ -110,9 +115,12 @@ public class ImageSolo extends AppCompatActivity {
             }
             shareWallpaper(bitmap);
             finish();
+        } else if (id == android.R.id.home) {
+            finish();
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void shareWallpaper(Bitmap bitmap) {
 
         MimeTypeMap map = MimeTypeMap.getSingleton();
@@ -158,6 +166,4 @@ public class ImageSolo extends AppCompatActivity {
         }
         return bmpUri;
     }
-
-
 }
