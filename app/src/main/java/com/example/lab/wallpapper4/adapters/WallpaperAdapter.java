@@ -82,7 +82,7 @@ public class WallpaperAdapter extends RecyclerView.Adapter<WallpaperAdapter.MyVi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity, ImageSolo.class);
-                intent.putExtra("Value1", wallpapers.get(i).getImagePath());
+                intent.putExtra("ImagePath", wallpapers.get(i).getImagePath());
                 activity.startActivity(intent);
             }
         });

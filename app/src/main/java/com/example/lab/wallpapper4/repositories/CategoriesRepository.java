@@ -39,7 +39,6 @@ public class CategoriesRepository {
         categoriesAdd.add(new Category("Fruits", R.drawable.fruits0));
         categoriesAdd.add(new Category("Space", R.drawable.rsz_1space0));
         categoriesAdd.add(new Category("Sky", R.drawable.skycloud0));
-        categoriesAdd.add(new Category("Proba", R.drawable.lotus));
 
         categories = categoriesAdd;
 

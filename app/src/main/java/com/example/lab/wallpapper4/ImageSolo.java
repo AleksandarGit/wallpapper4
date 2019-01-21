@@ -61,11 +61,11 @@ public class ImageSolo extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        final int wallpaperIndex = this.getIntent().getExtras().getInt("Value1");
+        final int wallpaperIndex = this.getIntent().getExtras().getInt("ImagePath");
 
         ImageView wallpaper = findViewById(R.id.ivSoloImage);
 
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.car);
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cars0);
         wallpaper.setImageBitmap(bitmap);
 
         RequestOptions myOptions = new RequestOptions()
@@ -77,7 +77,6 @@ public class ImageSolo extends AppCompatActivity {
                 .signature(new ObjectKey(System.currentTimeMillis() / (24 * 60 * 60 * 1000)));
         Glide.with(this)
                 .load(wallpaperIndex)
-
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .thumbnail(0.1f)
                 .apply(myOptions)
@@ -154,9 +153,9 @@ public class ImageSolo extends AppCompatActivity {
         Uri bmpUri = null;
         try {
             File file = new File(this.getExternalFilesDir(Environment.DIRECTORY_PICTURES),
-                    "wallpaper_hub_" + System.currentTimeMillis() + ".png");
+                    "wallpaper_hub_" + System.currentTimeMillis() + ".jpg");
             FileOutputStream out = new FileOutputStream(file);
-            bmp.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, out);
             out.close();
             bmpUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", file);
         } catch (FileNotFoundException e) {
